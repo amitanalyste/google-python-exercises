@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 29 18:33:44 2017
+
+@author: amit
+"""
+
+def twoSum(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    for i in range(len(nums)):
+        start = nums[i]
+        if start > target:
+            pass
+        for j in range(len(nums) - (i+1)):
+            check = start + nums[i+1+j]
+            if check == target:
+                return (i, i+j+1)
+
+
+def twoSum2(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        half_target = (target // 2)
+        if half_target == 0:
+            one = target
+            two = half_target
+            if one == two:
+                first_index = nums.index(one)
+                nums.pop(nums.index(one))
+                second_index = nums.index(two) + 1
+                return [first_index, second_index]
+            else:
+                first_index = nums.index(one)
+                second_index = nums.index(two)
+                return [first_index, second_index]
+        
+        for i in range(half_target):
+            
+        
+            
+            if one == two and nums.count(one) >= 2:
+                print("Entered")
+                first_index = nums.index(one)
+                nums.pop(nums.index(one))
+                second_index = nums.index(two) + 1
+                return [first_index, second_index]
+        
+            if one != two and one in nums and two in nums:
+                first_index = nums.index(one)
+                second_index = nums.index(two)
+                return [first_index, second_index]

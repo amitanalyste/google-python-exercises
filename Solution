@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jul  1 16:06:33 2017
+
+@author: amit
+"""
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        def map(s):
+            op = ''
+            for word in s:
+                if word in op:
+                    return False
+                else:
+                    op = op + word
+            return True
+        if len(s) == 0:
+            return 0 
+        
+        lols = (s[0], 1)
+        for i in range(len(s)):
+            el = lols[1] + 1
+            while i + el <= len(s) and map(s[i:i+el]):
+                lols = (s[i:i+el], el)
+                el += 1
+        return lols[1]
+                
+    def lengthOfLongestSubstring2(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        def map(s):
+            op = ''
+            for word in s:
+                if word in op:
+                    return False
+                else:
+                    op = op + word
+            return True
+        if len(s) == 0:
+            return 0 
+        lols = (s[0], 1)
+        for i in range(len(s) - 1):
+            for j in range(i+1, len(s)+1):
+                
+                if(map(s[i:j]) and len(s[i:j]) > lols[1]):
+                    lols = (s[i:j], len(s[i:j]))
+        return lols[1]
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        nums = sorted(nums1 + nums2)
+        l = len(nums)
+        if l == 1:
+            return nums[0]
+        elif l == 0:
+            return 0
+        elif l % 2 == 0:
+            return (nums[int(l/2)] + nums[int((l/2) - 1)])/2
+        else:
+            return nums[int((l-1)/2)]
+        
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        
+    def isPalindrome(s):
+        l = len(s)
+        if l % 2 == 0:    
+            return s[:int(l/2)] == s[int(l/2):][::-1]
+        else:
+            return s[:l//2] == s[(l//2) + 1 :]
+            
+            
+            
+            
+            
+            
+            
